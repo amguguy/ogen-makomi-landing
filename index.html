@@ -1,0 +1,559 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>עוגן מקומי</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700;800&family=IBM+Plex+Sans+Hebrew:wght@300;400;600;700&family=Rubik:wght@500;700;800&display=swap">
+<style>
+/* Layout: one long RTL landing page in full-width bands; direction 05 = modular grid + highlighted node, direction 04 = open frames + white space.
+   Bare :root = direction 05 (light). [data-dir="space"] = direction 04. Both have dark variants. */
+:root{
+  --bg:#EDE6D8; --surface:#F7F2E8; --ink:#1B2937; --muted:#4E5A55; --line:#CFC6B4;
+  --brand:#0C3C32; --on-brand:#EDE6D8; --on-brand-muted:#B9C4B5;
+  --accent:#C6E13C; --accent-ink:#0C3C32; --warm:#E3B443; --sage:#75845A;
+  --todo-bg:#F6E7BD; --todo-ink:#5A4410; --todo-line:#C9A23A;
+  --font-display:"Rubik","Heebo",system-ui,sans-serif; --display-weight:800; --display-track:-0.02em;
+  --font-body:"Heebo","Arial Hebrew",Arial,sans-serif;
+  --font-label:"IBM Plex Sans Hebrew","Heebo",Arial,sans-serif;
+  --radius:4px;
+}
+:root[data-dir="space"]{
+  --bg:#F2F0E8; --surface:#FAF9F4; --ink:#172620; --muted:#53615A; --line:#D3D6CC;
+  --brand:#172620; --on-brand:#F2F0E8; --on-brand-muted:#AEBBB4;
+  --accent:#B7CF52; --accent-ink:#172620; --warm:#D95C42; --sage:#9AADA4;
+  --todo-bg:#F7E0D9; --todo-ink:#6B2416; --todo-line:#D95C42;
+  --font-display:"IBM Plex Sans Hebrew","Heebo",system-ui,sans-serif; --display-weight:300; --display-track:0.01em;
+  --radius:0px;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0B1E1A; --surface:#112925; --ink:#ECE6D8; --muted:#A8B3A6; --line:#28443C;
+    --brand:#123A31; --on-brand:#ECE6D8; --on-brand-muted:#A8B8A6;
+    --accent:#C6E13C; --accent-ink:#0C3C32; --warm:#E3B443; --sage:#9AA97A;
+    --todo-bg:#3A3115; --todo-ink:#F1D98C; --todo-line:#8C7429; color-scheme:dark;
+  }
+  :root[data-dir="space"]:not([data-theme="light"]){
+    --bg:#111A16; --surface:#18241F; --ink:#F2F0E8; --muted:#A4B0AA; --line:#2B3A33;
+    --brand:#1D2C26; --on-brand:#F2F0E8; --on-brand-muted:#A4B0AA;
+    --accent:#B7CF52; --accent-ink:#172620; --warm:#E5806A; --sage:#9AADA4;
+    --todo-bg:#3B201A; --todo-ink:#F3B9AA; --todo-line:#A0503E;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0B1E1A; --surface:#112925; --ink:#ECE6D8; --muted:#A8B3A6; --line:#28443C;
+  --brand:#123A31; --on-brand:#ECE6D8; --on-brand-muted:#A8B8A6;
+  --accent:#C6E13C; --accent-ink:#0C3C32; --warm:#E3B443; --sage:#9AA97A;
+  --todo-bg:#3A3115; --todo-ink:#F1D98C; --todo-line:#8C7429; color-scheme:dark;
+}
+:root[data-theme="dark"][data-dir="space"]{
+  --bg:#111A16; --surface:#18241F; --ink:#F2F0E8; --muted:#A4B0AA; --line:#2B3A33;
+  --brand:#1D2C26; --on-brand:#F2F0E8; --on-brand-muted:#A4B0AA;
+  --accent:#B7CF52; --accent-ink:#172620; --warm:#E5806A; --sage:#9AADA4;
+  --todo-bg:#3B201A; --todo-ink:#F3B9AA; --todo-line:#A0503E;
+}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--font-body);font-size:17px;line-height:1.65}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--brand)}
+.page{direction:rtl;text-align:right}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--warm);outline-offset:3px}
+.wrap{max-width:1180px;margin-inline:auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--font-display);font-weight:var(--display-weight);letter-spacing:var(--display-track);text-wrap:balance;margin:0;line-height:1.15}
+h2{font-size:clamp(28px,3.6vw,44px)}
+h3{font-size:20px;font-family:var(--font-body);font-weight:700;letter-spacing:0}
+p{margin:0}
+.eyebrow{font-family:var(--font-label);font-size:13px;font-weight:600;letter-spacing:.06em;color:var(--sage)}
+.lead{font-size:clamp(18px,1.7vw,21px);max-width:62ch;color:var(--muted)}
+.prose{display:grid;gap:14px;max-width:64ch}
+.skip{position:absolute;inset-inline-start:-999px;top:8px;background:var(--accent);color:var(--accent-ink);padding:8px 14px;z-index:30}
+.skip:focus{inset-inline-start:16px}
+
+/* direction-specific pieces */
+:root:not([data-dir="space"]) .only-space{display:none}
+:root[data-dir="space"] .only-hybrid{display:none}
+
+/* header */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--brand);color:var(--on-brand)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px;padding-block:12px}
+.logo{display:flex;align-items:center;gap:10px;min-height:44px;text-decoration:none;font-family:var(--font-display);font-weight:800;font-size:21px;letter-spacing:-.01em}
+:root[data-dir="space"] .logo{font-weight:600;letter-spacing:.04em}
+.logo svg{width:30px;height:30px;flex:none}
+.nav{display:flex;gap:22px;font-size:15px}
+.nav a{text-decoration:none;color:var(--on-brand-muted)}
+.nav a:hover{color:var(--on-brand)}
+.btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--font-body);font-weight:700;font-size:16px;text-decoration:none;border:0;cursor:pointer;border-radius:var(--radius);padding:13px 22px;background:var(--accent);color:var(--accent-ink);transition:transform .15s ease}
+.btn:hover{transform:translateY(-1px)}
+.btn.small{padding:9px 16px;font-size:14px;min-height:44px}
+.btn.ghost{background:transparent;color:inherit;box-shadow:inset 0 0 0 1.5px currentColor}
+.arrow{font-family:var(--font-label)}
+@media (max-width:960px){.nav{display:none}}
+
+/* hero */
+.hero{background:var(--brand);color:var(--on-brand);overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:48px;align-items:center;padding-block:64px 72px}
+.hero h1{font-size:clamp(48px,7.4vw,96px);line-height:1}
+.hero .tag{font-family:var(--font-display);font-weight:var(--display-weight);font-size:clamp(22px,2.6vw,32px);color:var(--accent);margin-top:10px}
+.hero .hook{font-weight:700;font-size:clamp(19px,1.8vw,22px);margin-top:28px;max-width:34ch}
+.hero .body{color:var(--on-brand-muted);max-width:58ch;margin-top:14px;display:grid;gap:12px}
+.hero .line{font-family:var(--font-label);font-weight:600;margin-top:22px;padding-top:16px;border-top:1px solid color-mix(in srgb,var(--on-brand) 22%,transparent);max-width:58ch}
+.hero .ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+.hero-art{width:100%;max-width:440px;justify-self:center;color:var(--on-brand)}
+.hero-art svg{width:100%;height:auto;display:block;direction:ltr}
+:root[data-dir="space"] .hero{background:var(--bg);color:var(--ink)}
+:root[data-dir="space"] .hero .body{color:var(--muted)}
+:root[data-dir="space"] .hero .tag{color:var(--warm)}
+:root[data-dir="space"] .hero .line{border-top-color:var(--line)}
+:root[data-dir="space"] .hero-art{color:var(--ink)}
+:root[data-dir="space"] .hero h1{font-weight:300;letter-spacing:.02em}
+:root[data-dir="space"] .hero h1 b{font-weight:700}
+@media (max-width:860px){.hero .wrap{grid-template-columns:1fr;padding-block:44px 52px;gap:36px}.hero-art{max-width:340px}}
+@media (max-width:560px){.hero .ctas .btn{flex:1 1 100%;justify-content:center}.choose .btn.big{display:flex;justify-content:center;font-size:17px}.top .logo{font-size:19px}}
+
+/* sections */
+section.band{padding-block:84px}
+section.band + section.band{border-top:1px solid var(--line)}
+.head{display:grid;gap:12px;margin-bottom:40px}
+@media (max-width:700px){section.band{padding-block:60px}}
+
+/* zones */
+.zones{border:1px solid var(--line);background:var(--surface);border-radius:var(--radius)}
+.zones-top{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 20px;padding:16px 22px;border-bottom:1px solid var(--line);font-family:var(--font-label);font-size:14px;color:var(--muted)}
+.zones-top b{color:var(--ink);font-weight:700}
+.zone-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}
+.zone{padding:26px 22px;display:grid;gap:8px;align-content:start;border-bottom:1px solid var(--line)}
+.zone:not(:nth-child(3n)){border-inline-end:1px solid var(--line)}
+.zone h3{display:flex;align-items:center;gap:10px}
+.node{width:11px;height:11px;flex:none;background:var(--sage)}
+:root[data-dir="space"] .node{background:transparent;border:2px solid var(--sage);border-inline-start-color:transparent}
+.zone p{color:var(--muted)}
+.zone.more{grid-column:1/-1;border:0;background:var(--accent);color:var(--accent-ink);display:flex;flex-wrap:wrap;align-items:center;gap:8px 16px}
+.zone.more p{color:var(--accent-ink)}
+.zone.more .node{background:var(--accent-ink)}
+@media (max-width:860px){.zone-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.zone:not(:nth-child(3n)){border-inline-end:0}.zone:nth-child(odd):not(.more){border-inline-end:1px solid var(--line)}}
+@media (max-width:560px){.zone-grid{grid-template-columns:1fr}.zone:nth-child(odd):not(.more){border-inline-end:0}}
+
+/* value */
+.split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:56px;align-items:start}
+@media (max-width:860px){.split{grid-template-columns:1fr;gap:36px}}
+.traits{display:grid;gap:0;border-top:2px solid var(--ink)}
+.trait{display:grid;grid-template-columns:minmax(0,11ch) minmax(0,1fr);gap:18px;padding-block:18px;border-bottom:1px solid var(--line)}
+.trait b{font-family:var(--font-display);font-weight:var(--display-weight);font-size:19px;line-height:1.3}
+:root[data-dir="space"] .trait b{font-weight:600}
+.trait span{color:var(--muted)}
+@media (max-width:480px){.trait{grid-template-columns:1fr;gap:4px}}
+.quote{margin-top:44px;font-family:var(--font-display);font-weight:var(--display-weight);font-size:clamp(22px,2.4vw,30px);line-height:1.3;max-width:30ch}
+.quote small{display:block;font-family:var(--font-label);font-size:13px;font-weight:600;letter-spacing:.06em;color:var(--sage);margin-bottom:10px}
+:root[data-dir="space"] .quote{border:0;position:relative;padding:22px 26px}
+:root[data-dir="space"] .quote::before{content:"";position:absolute;inset:0;border:2px solid var(--warm);border-inline-end:0;pointer-events:none}
+
+/* process */
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:0;counter-reset:s}
+.step{position:relative;padding-inline-end:20px;padding-top:58px;display:grid;gap:8px;align-content:start}
+.step::before{counter-increment:s;content:counter(s);position:absolute;top:0;inset-inline-start:0;width:42px;height:42px;display:grid;place-items:center;font-family:var(--font-label);font-weight:700;background:var(--brand);color:var(--on-brand);border-radius:var(--radius)}
+.step::after{content:"";position:absolute;top:21px;inset-inline-start:50px;inset-inline-end:8px;height:2px;background:var(--line)}
+.step:last-child::after{display:none}
+.step:last-child::before{background:var(--accent);color:var(--accent-ink)}
+.step p{color:var(--muted);font-size:16px}
+:root[data-dir="space"] .step::before{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 2px var(--ink)}
+:root[data-dir="space"] .step:last-child::before{background:var(--warm);color:#fff;box-shadow:none}
+@media (max-width:900px){
+  .steps{grid-template-columns:1fr;gap:0}
+  .step{padding-top:0;padding-inline-start:62px;padding-bottom:28px;padding-inline-end:0}
+  .step::after{top:50px;bottom:6px;inset-inline-start:20px;inset-inline-end:auto;width:2px;height:auto}
+}
+.note{margin-top:30px;font-family:var(--font-label);color:var(--muted);font-size:15px}
+
+/* outputs */
+.outs{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.outs li{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:20px 22px;display:grid;grid-template-columns:auto minmax(0,1fr);gap:14px;align-items:start}
+.tick{width:22px;height:22px;margin-top:3px;color:var(--sage)}
+@media (max-width:620px){.outs{grid-template-columns:1fr}}
+.after{margin-top:34px;display:grid;gap:6px;max-width:64ch}
+.after h3{font-size:18px}
+.after p{color:var(--muted)}
+.bound{margin-top:18px;font-size:15px;color:var(--muted)}
+
+/* examples */
+.cases{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.case{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:24px;display:grid;grid-template-rows:auto auto 1fr;gap:16px}
+.case .chip{justify-self:start;font-family:var(--font-label);font-size:13px;font-weight:600;padding:4px 10px;background:var(--brand);color:var(--on-brand);border-radius:var(--radius)}
+.case h3{font-size:19px;line-height:1.35}
+.case dl{margin:0;display:grid;gap:12px;align-content:start}
+.case dt{font-family:var(--font-label);font-size:13px;font-weight:700;letter-spacing:.04em;color:var(--sage)}
+.case dd{margin:2px 0 0;color:var(--muted);font-size:15.5px}
+@media (max-width:960px){.cases{grid-template-columns:1fr}}
+
+/* choose */
+.choose{background:var(--brand);color:var(--on-brand)}
+.choose .lead,.choose .prose p{color:var(--on-brand-muted)}
+.choose .eyebrow{color:var(--accent)}
+.flow{list-style:none;margin:28px 0 0;padding:0;display:grid;gap:0;max-width:56ch}
+.flow li{display:grid;grid-template-columns:34px minmax(0,1fr);gap:14px;padding-block:14px;border-top:1px solid color-mix(in srgb,var(--on-brand) 18%,transparent)}
+.flow .n{font-family:var(--font-label);font-weight:700;color:var(--accent)}
+.flow b{display:block}
+.flow span{color:var(--on-brand-muted);font-size:15.5px}
+.pitch{background:var(--surface);color:var(--ink);border-radius:var(--radius);padding:26px;display:grid;gap:14px}
+.pitch h3{font-size:19px}
+.pitch .sub{color:var(--muted);font-size:15px}
+.pitch blockquote{margin:0;padding:16px 18px;background:var(--bg);border:1px solid var(--line);font-size:15.5px;line-height:1.7}
+.pitch .row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.pitch .status{font-size:14px;color:var(--muted)}
+.choose .btn.big{font-size:18px;padding:16px 26px;margin-top:30px}
+:root[data-dir="space"] .choose{background:var(--bg);color:var(--ink)}
+:root[data-dir="space"] .choose .lead,:root[data-dir="space"] .choose .prose p,:root[data-dir="space"] .flow span{color:var(--muted)}
+:root[data-dir="space"] .choose .eyebrow,:root[data-dir="space"] .flow .n{color:var(--warm)}
+:root[data-dir="space"] .flow li{border-top-color:var(--line)}
+:root[data-dir="space"] .pitch{border:1px solid var(--line)}
+
+/* company */
+.company{display:grid;grid-template-columns:auto minmax(0,1fr);gap:32px;align-items:center}
+.company .mark{width:120px;height:120px;border:1.5px dashed var(--line);display:grid;place-items:center;font-family:var(--font-label);font-size:13px;color:var(--muted);text-align:center;padding:10px}
+@media (max-width:600px){.company{grid-template-columns:1fr}}
+
+/* footer */
+footer{background:var(--brand);color:var(--on-brand-muted);font-size:15px}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;padding-block:34px 96px}
+footer b{color:var(--on-brand);font-family:var(--font-display);font-weight:var(--display-weight);font-size:20px}
+footer nav{display:flex;flex-wrap:wrap;gap:18px}
+
+/* draft notes */
+.todo{display:inline-block;font-family:var(--font-label);font-size:13px;font-weight:600;line-height:1.4;background:var(--todo-bg);color:var(--todo-ink);border:1px dashed var(--todo-line);padding:3px 9px;border-radius:3px}
+.todo.block{display:block;margin-top:14px}
+.page.clean .todo{display:none}
+
+/* prototype bar */
+.proto{position:fixed;z-index:25;bottom:calc(14px + env(safe-area-inset-bottom,0px));left:calc(14px + env(safe-area-inset-left,0px));background:var(--ink);color:var(--bg);border-radius:8px;padding:10px 12px;display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;font-family:var(--font-label);font-size:13px;box-shadow:0 8px 24px rgba(0,0,0,.25);max-width:calc(100vw - 28px)}
+.proto .seg{display:flex;border:1px solid color-mix(in srgb,var(--bg) 35%,transparent);border-radius:6px;overflow:hidden}
+.proto button{font:inherit;font-weight:600;background:transparent;color:inherit;border:0;padding:8px 12px;min-height:40px;cursor:pointer}
+.proto button[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink)}
+.proto .lbl{opacity:.75}
+@media (max-width:600px){.proto{padding:6px;gap:6px}.proto .lbl,.proto .long{display:none}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+</style>
+</head>
+<body>
+
+<div class="page" id="page" dir="rtl" lang="he">
+<a class="skip" href="#main">דילוג לתוכן</a>
+
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="עוגן מקומי — לראש הדף">
+      <svg class="only-hybrid" viewBox="0 0 30 30" aria-hidden="true">
+        <g fill="currentColor" opacity=".55"><rect x="0" y="0" width="8" height="8"/><rect x="11" y="0" width="8" height="8"/><rect x="22" y="0" width="8" height="8"/><rect x="0" y="11" width="8" height="8"/><rect x="22" y="11" width="8" height="8"/><rect x="0" y="22" width="8" height="8"/><rect x="11" y="22" width="8" height="8"/><rect x="22" y="22" width="8" height="8"/></g>
+        <rect x="11" y="11" width="8" height="8" fill="var(--accent)"/>
+      </svg>
+      <svg class="only-space" viewBox="0 0 30 30" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="3">
+        <path d="M21 2H2v26h26V12"/><rect x="11" y="11" width="8" height="8" fill="var(--accent)" stroke="none"/>
+      </svg>
+      עוגן מקומי
+    </a>
+    <nav class="nav" aria-label="ניווט בדף">
+      <a href="#zones">זירות</a><a href="#value">למה עוגן מקומי</a><a href="#how">איך זה עובד</a><a href="#outputs">תוצרים</a><a href="#field">מהשטח</a>
+    </nav>
+    <a class="btn small" href="#choose">איך מביאים לרשות?</a>
+  </div>
+</header>
+
+<main id="main">
+<!-- 1 Hero -->
+<section class="hero" id="top">
+  <div class="wrap">
+    <div>
+      <h1><b>עוגן</b> מקומי</h1>
+      <p class="tag">דברים גדולים עושים יחד.</p>
+      <p class="hook">יש לכם אתגר משמעותי ברשות? בואו נהפוך אותו למנוע של מנהיגות, יוזמה ושינוי.</p>
+      <div class="body">
+        <p>עוגן מקומי היא תוכנית לפיתוח מנהיגות השתתפותית ויזמות מקומית, המסייעת לאגפים ולמחלקות ברשויות לקדם אתגרים בתחומי אחריותם.</p>
+        <p>באמצעות למידה התנסותית, מיפוי צרכים ונכסים, חיבורים בין אנשים ופיתוח רעיונות ליוזמות, התוכנית מחזקת את היכולת המקומית להוביל עשייה משותפת.</p>
+      </div>
+      <p class="line">תוכנית אחת. מגוון זירות השפעה. יכולות שנבנות לאורך הדרך.</p>
+      <div class="ctas">
+        <a class="btn" href="#choose">איך מביאים את עוגן מקומי לרשות? <span class="arrow" aria-hidden="true">←</span></a>
+        <a class="btn ghost" href="#how">איך זה עובד</a>
+      </div>
+    </div>
+
+    <div class="hero-art" aria-hidden="true">
+      <!-- 05: modular map, one highlighted node -->
+      <svg class="only-hybrid" viewBox="0 0 400 400">
+        <g stroke="currentColor" stroke-opacity=".14" stroke-width="1">
+          <path d="M0 50H400M0 100H400M0 150H400M0 200H400M0 250H400M0 300H400M0 350H400M50 0V400M100 0V400M150 0V400M200 0V400M250 0V400M300 0V400M350 0V400"/>
+        </g>
+        <g stroke="currentColor" stroke-opacity=".5" stroke-width="1.5" fill="none" stroke-dasharray="4 5">
+          <path d="M200 200L100 100M200 200L300 100M200 200L350 200M200 200L300 300M200 200L100 300M200 200L50 200"/>
+        </g>
+        <g fill="var(--sage)">
+          <rect x="91" y="91" width="18" height="18"/><rect x="291" y="91" width="18" height="18"/><rect x="341" y="191" width="18" height="18"/>
+          <rect x="291" y="291" width="18" height="18"/><rect x="91" y="291" width="18" height="18"/><rect x="41" y="191" width="18" height="18"/>
+        </g>
+        <rect x="172" y="172" width="56" height="56" fill="var(--accent)"/>
+        <rect x="160" y="160" width="80" height="80" fill="none" stroke="var(--accent)" stroke-width="1.5"/>
+        <g fill="currentColor" font-family="IBM Plex Sans Hebrew, Heebo, sans-serif" font-size="19" font-weight="600" text-anchor="middle">
+          <text x="100" y="80">חינוך</text><text x="300" y="80">קהילה</text><text x="350" y="236">בריאות</text>
+          <text x="300" y="336">רווחה</text><text x="100" y="336">חוסן וחירום</text><text x="50" y="236">צעירים</text>
+        </g>
+        <g fill="currentColor" font-family="IBM Plex Sans Hebrew, Heebo, sans-serif" font-size="14" opacity=".6">
+          <text x="396" y="14" text-anchor="end">זירות השפעה · 6+</text><text x="4" y="394">תוכנית אחת</text>
+        </g>
+      </svg>
+      <!-- 04: open frame -->
+      <svg class="only-space" viewBox="0 0 400 400">
+        <path d="M250 30H30V370H370V160" fill="none" stroke="currentColor" stroke-width="10"/>
+        <rect x="300" y="30" width="70" height="70" fill="var(--accent)"/>
+        <g fill="currentColor" font-family="IBM Plex Sans Hebrew, Heebo, sans-serif" text-anchor="end">
+          <text x="330" y="168" font-size="30" font-weight="300">חינוך</text>
+          <text x="330" y="208" font-size="30" font-weight="300">קהילה</text>
+          <text x="330" y="248" font-size="30" font-weight="700" fill="var(--warm)">בריאות</text>
+          <text x="330" y="288" font-size="30" font-weight="300">רווחה</text>
+          <text x="330" y="328" font-size="30" font-weight="300">צעירים …</text>
+        </g>
+        <text x="70" y="352" font-family="IBM Plex Sans Hebrew, Heebo, sans-serif" font-size="17" fill="currentColor" opacity=".65" text-anchor="start">מה יקרה כאן?</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- 2 Zones -->
+<section class="band" id="zones">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">באיזו זירה תרצו לייצר שינוי?</span>
+      <h2>האתגר שלכם. הדרך שלנו. העשייה של כולם.</h2>
+      <div class="prose lead">
+        <p>בכל תחום ברשות יש אתגרים שדורשים יותר ממענה נקודתי.</p>
+        <p>עוגן מקומי מאפשרת להפוך את האתגר לתהליך של פיתוח מנהיגות, יצירת שותפויות וגיבוש כיווני פעולה חדשים.</p>
+      </div>
+    </div>
+    <div class="zones">
+      <div class="zones-top"><span><b>תוכנית אחת — עוגן מקומי.</b> זירות היישום מותאמות לאגף שמזמין.</span><span>זירות לדוגמה</span></div>
+      <div class="zone-grid">
+        <div class="zone"><h3><i class="node"></i>חינוך</h3><p>מצמיחים מנהיגות ויוזמות מתוך המערכת החינוכית.</p></div>
+        <div class="zone"><h3><i class="node"></i>קהילה</h3><p>מחברים תושבים ופעילים לעשייה ולהשפעה מקומית.</p></div>
+        <div class="zone"><h3><i class="node"></i>בריאות</h3><p>מפתחים מנהיגות ויוזמות מתוך צורכי הבריאות בקהילה.</p></div>
+        <div class="zone"><h3><i class="node"></i>רווחה</h3><p>מזהים כוחות ובונים חיבורים ומענים קהילתיים.</p></div>
+        <div class="zone"><h3><i class="node"></i>חוסן וחירום</h3><p>מחזקים יכולת לפעולה משותפת ולהתמודדות עם אתגרים.</p></div>
+        <div class="zone"><h3><i class="node"></i>צעירים</h3><p>פותחים אפשרויות למנהיגות, יוזמה והשפעה של הדור הצעיר.</p></div>
+        <div class="zone more"><h3><i class="node"></i>וזה לא הכול</h3><p>התוכנית ניתנת להתאמה גם לזירות נוספות בתחומי האחריות של הרשות.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3 Value -->
+<section class="band" id="value">
+  <div class="wrap split">
+    <div>
+      <div class="head">
+        <span class="eyebrow">למה עוגן מקומי?</span>
+        <h2>לא רק מענה לצורך. פיתוח היכולת לייצר מענים.</h2>
+      </div>
+      <div class="prose">
+        <p>עוגן מקומי אינה עוד סדרת הרצאות או סדנאות.</p>
+        <p>זוהי תוכנית למידה והתנסות, שבה המשתתפים עובדים עם אתגרים מקומיים אמיתיים, מפתחים יכולות מנהיגות ויזמות, מזהים כוחות ומשאבים ובונים קשרים ושותפויות.</p>
+        <p>כך, לצד העיסוק באתגר המיידי, התוכנית יכולה ליצור בסיס אנושי וארגוני להמשך עשייה ולהתפתחות יוזמות נוספות.</p>
+      </div>
+      <p class="quote"><small>עוגן מקומי</small>לא רק מה שעושים עכשיו, אלא מה שבונים כדי שאפשר יהיה לעשות יותר מחר.</p>
+    </div>
+    <div>
+      <h3 style="margin-bottom:14px">מה מייחד את הדרך שלנו?</h3>
+      <div class="traits">
+        <div class="trait"><b>קהילה ולא קהל</b><span>המשתתפים שותפים ליצירת הידע והעשייה.</span></div>
+        <div class="trait"><b>למידה דרך התנסות</b><span>הכלים נלמדים דרך עבודה על אתגרים ממשיים.</span></div>
+        <div class="trait"><b>מנהיגות השתתפותית</b><span>מפתחים יכולת להוביל עם אנשים, ולא רק עבורם.</span></div>
+        <div class="trait"><b>חיבור למציאות המקומית</b><span>זירת הפעולה, המשתתפים והמטרות מותאמים לאגף ולרשות.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4 How -->
+<section class="band" id="how">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">איך התוכנית עובדת?</span>
+      <h2>מתחילים מהאתגר. מתקדמים עם האנשים.</h2>
+    </div>
+    <ol class="steps">
+      <li class="step"><h3>מגדירים זירה ואתגר</h3><p>מבהירים את זירת הפעולה, המטרות וקהל המשתתפים.</p></li>
+      <li class="step"><h3>ממפים צרכים ונכסים</h3><p>מזהים צרכים, נכסים, קשרים והזדמנויות בזירה.</p></li>
+      <li class="step"><h3>מפתחים מנהיגות</h3><p>רוכשים כלים ומשתמשים בהם בהתנסויות מעשיות.</p></li>
+      <li class="step"><h3>יוצרים חיבורים</h3><p>מזהים אפשרויות לשותפות ולפעולה משותפת.</p></li>
+      <li class="step"><h3>מגבשים רעיונות ליוזמות</h3><p>מסיימים עם כיווני פעולה שיכולים להתפתח ליוזמות מקומיות.</p></li>
+    </ol>
+    <p class="note">מסלול התוכנית מותאם למטרות האגף או המחלקה, למשתתפים ולאתגרים המקומיים.</p>
+  </div>
+</section>
+
+<!-- 5 Outputs -->
+<section class="band" id="outputs">
+  <div class="wrap split">
+    <div class="head" style="margin:0">
+      <span class="eyebrow">עם מה יוצאים?</span>
+      <h2>מה נשאר בסיום התוכנית?</h2>
+      <p class="lead" style="font-weight:700;color:var(--ink)">יותר מידע. יותר יכולת. יותר אפשרויות לפעולה.</p>
+      <p class="lead">המשתתפים מסיימים את התוכנית עם כלים למנהיגות וליזמות, היכרות עם צרכים וכוחות מקומיים, חיבורים שנוצרו לאורך הדרך ורעיונות ליוזמות שיכולות לתת מענה לאתגרים בזירה.</p>
+    </div>
+    <div>
+      <ul class="outs">
+        <li><svg class="tick" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M4 11.5l4.5 4.5L18 6"/></svg><span>משתתפים שנחשפו לכלים והתנסו במנהיגות השתתפותית וביזמות.</span></li>
+        <li><svg class="tick" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M4 11.5l4.5 4.5L18 6"/></svg><span>הבנה טובה יותר של הצרכים, הנכסים וההזדמנויות בזירה המקומית.</span></li>
+        <li><svg class="tick" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M4 11.5l4.5 4.5L18 6"/></svg><span>קשרים וחיבורים שנוצרו במהלך התהליך.</span></li>
+        <li><svg class="tick" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M4 11.5l4.5 4.5L18 6"/></svg><span>רעיונות מגובשים ליוזמות מקומיות.</span></li>
+      </ul>
+      <div class="after">
+        <h3>ומה ביום שאחרי?</h3>
+        <p>הרשות יכולה להמשיך לפתח את הרעיונות באופן עצמאי או לבחור במסלול ליווי נוסף לקידומם.</p>
+      </div>
+      <p class="bound">תוכנית הבסיס מסתיימת בגיבוש רעיונות ליוזמות, ואינה כוללת בהכרח יישום מלא שלהן בשטח.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 6 Field -->
+<section class="band" id="field">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">דוגמאות מהשטח</span>
+      <h2>אותה דרך. זירות שונות. אתגרים מקומיים.</h2>
+      <span class="todo">טיוטה מתוך מסמך החפיפה. כל דוגמה דורשת אימות פרטים ואישור פרסום מהרשות לפני עלייה לאוויר.</span>
+    </div>
+    <div class="cases">
+      <article class="case">
+        <span class="chip">חינוך</span>
+        <h3>נבחרת מנהיגות חינוכית</h3>
+        <dl>
+          <div><dt>האתגר</dt><dd>מחלקת החינוך היסודי רצתה לאתר ולקדם מתוך צוותי החינוך מועמדים ומועמדות לניהול בתי ספר בעיר.</dd></div>
+          <div><dt>התהליך</dt><dd>מעבר „ממבצעים למעצבים”: הקשבה דיאלוגית, מפת אמפתיה, התבוננות במערכת מקצוותיה ובניית תוכנית פעולה.</dd></div>
+          <div><dt>התוצר</dt><dd>שלושה משתתפים ומשתתפות הגישו מועמדות לניהול בית ספר. <span class="todo">נדרש אימות</span></dd></div>
+        </dl>
+      </article>
+      <article class="case">
+        <span class="chip">קהילה וקיימות</span>
+        <h3>פעילי שכונות מקיימות</h3>
+        <dl>
+          <div><dt>האתגר</dt><dd>לפתח מנהיגות שכונתית לקיימות: קבוצת פעילים שיודעת ליזום, להחזיק ולהרחיב תשתיות שכונתיות לאורך זמן, בשגרה ובחירום.</dd></div>
+          <div><dt>התהליך</dt><dd>מסלולים שכונתיים מותאמים, סיור „אוצרות וצרות”, חלימה משותפת ותכנון בצוותים, ושולחנות עבודה עם הרשות.</dd></div>
+          <div><dt>התוצר</dt><dd>דפי יוזמה, צוותי פעולה ויריד מיזמים שכונתיים. <span class="todo">נדרש אימות: האם בוצע ובאיזו גרסה</span></dd></div>
+        </dl>
+      </article>
+      <article class="case">
+        <span class="chip">בריאות</span>
+        <h3>מנהיגות גאה, בריאות וחוסן</h3>
+        <dl>
+          <div><dt>האתגר</dt><dd>לקדם בריאות וחוסן בקהילה הגאה, מתוך הצרכים והכוחות של הקהילה עצמה.</dd></div>
+          <div><dt>התהליך</dt><dd>מפגשים על בריאות וחוסן בקהילה, המודל האקולוגי לקידום בריאות, ומעבר „מחלום לפרויקט”.</dd></div>
+          <div><dt>התוצר</dt><dd><span class="todo">להשלמה: מה נוצר בפועל עד סיום התוכנית</span></dd></div>
+        </dl>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- 7 Choose -->
+<section class="band choose" id="choose">
+  <div class="wrap split">
+    <div>
+      <div class="head" style="margin-bottom:0">
+        <span class="eyebrow">בחירה בתוכנית</span>
+        <h2>רוצים להביא את עוגן מקומי לרשות שלכם?</h2>
+        <div class="prose lead">
+          <p>עוגן מקומי ניתנת לבחירה במסגרת מאגר התוכניות.</p>
+        </div>
+      </div>
+      <ol class="flow">
+        <li><span class="n">1</span><div><b>מנהל/ת אגף או מחלקה מתעניין/ת</b><span>מזהים אתגר משמעותי בתחום האחריות שעוגן מקומי יכולה לקדם.</span></div></li>
+        <li><span class="n">2</span><div><b>פנייה למקדם/ת הבריאות הרשותי/ת</b><span>לבדיקת האפשרות להקצות לתוכנית תקציב ולקבלת האישור הנדרש.</span></div></li>
+        <li><span class="n">3</span><div><b>תהליך התאמה</b><span>לאחר הבחירה מתאימים את התוכנית לצורכי האגף, לזירת הפעולה ולקהל המשתתפים.</span></div></li>
+      </ol>
+      <a class="btn big" href="#choose" aria-describedby="link-todo">לבחירת עוגן מקומי במאגר התוכניות <span class="arrow" aria-hidden="true">←</span></a>
+      <span class="todo block" id="link-todo">להשלמה: קישור ישיר לעוגן מקומי במאגר ונוסח רשמי של תהליך הבחירה.</span>
+    </div>
+    <aside class="pitch" aria-labelledby="pitch-h">
+      <h3 id="pitch-h">נוסח לפנייה לגורם המאשר</h3>
+      <p class="sub">אפשר להעתיק, להשלים את הפרטים בסוגריים ולשלוח למקדם/ת הבריאות הרשותי/ת.</p>
+      <blockquote id="pitch-text">שלום, אני מבקש/ת לבדוק אפשרות להקצות תקציב מתוך מאגר התוכניות לתוכנית עוגן מקומי ב[שם האגף/המחלקה]. עוגן מקומי היא השקעה בפיתוח יכולת רשותית, שיכולה לשמש בסיס ליוזמות ולפעולות נוספות. התוכנית מותאמת לזירת הפעולה שלנו ולאתגר [תיאור קצר של האתגר], ומפתחת מנהיגות השתתפותית, חיבורים ורעיונות ליוזמות מקומיות. אשמח לבדוק יחד את האפשרות ואת האישור הנדרש.</blockquote>
+      <div class="row">
+        <button class="btn small" type="button" id="copy-btn">העתקת הנוסח</button>
+        <span class="status" id="copy-status" role="status"></span>
+      </div>
+      <span class="todo">טיוטת נוסח. מבוססת על המסר לגורם התקציבי בבריף.</span>
+    </aside>
+  </div>
+</section>
+
+<!-- 8 Company -->
+<section class="band" id="company">
+  <div class="wrap company">
+    <div class="mark">לוגו החברה<br>להשלמה</div>
+    <div class="prose">
+      <span class="eyebrow">מי עומד מאחורי התוכנית?</span>
+      <h2>הניסיון שמאחורי עוגן מקומי</h2>
+      <p>עוגן מקומי נשענת על מומחיות בפיתוח מנהיגות השתתפותית, יזמות, תהליכים קהילתיים והובלת שינוי בארגונים וברשויות.</p>
+      <p>מוזמנים להכיר את החברה, את תחומי הפעילות שלה ואת השירותים והתוכניות הנוספים שהיא מציעה.</p>
+      <div><a class="btn ghost small" href="#company">להיכרות עם החברה ותחומי הפעילות <span class="arrow" aria-hidden="true">←</span></a></div>
+      <span class="todo">להשלמה: שם החברה הרשמי, לוגו וכתובת האתר.</span>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <b>עוגן מקומי — דברים גדולים עושים יחד.</b>
+    <nav aria-label="קישורים משפטיים"><a href="#top">הצהרת נגישות</a><a href="#top">מדיניות פרטיות</a><span>© 2026</span></nav>
+  </div>
+</footer>
+
+<div class="proto" role="group" aria-label="כלי אב־טיפוס">
+  <span class="lbl">אב־טיפוס · כיוון עיצובי</span>
+  <div class="seg">
+    <button type="button" id="dir-hybrid" data-dir="hybrid" aria-pressed="true">05<span class="long"> מערכת × מקומי</span></button>
+    <button type="button" id="dir-space" data-dir="space" aria-pressed="false">04<span class="long"> המרחב שמאפשר</span></button>
+  </div>
+  <div class="seg">
+    <button type="button" id="notes-btn" aria-pressed="true">סימוני טיוטה</button>
+  </div>
+</div>
+</div>
+
+<script>
+(function(){
+  var root=document.documentElement, page=document.getElementById('page');
+  root.lang='he'; root.dir='rtl';
+  function get(k){try{return localStorage.getItem(k)}catch(e){return null}}
+  function set(k,v){try{localStorage.setItem(k,v)}catch(e){}}
+  function setDir(d){
+    if(d==='space'){root.setAttribute('data-dir','space')}else{root.removeAttribute('data-dir');d='hybrid'}
+    document.querySelectorAll('.proto [data-dir]').forEach(function(b){b.setAttribute('aria-pressed',String(b.dataset.dir===d))});
+    set('ogen-dir',d);
+  }
+  var h=location.hash.replace('#','');
+  setDir(h==='d04'?'space':h==='d05'?'hybrid':(get('ogen-dir')||'hybrid'));
+  document.querySelectorAll('.proto [data-dir]').forEach(function(b){b.addEventListener('click',function(){setDir(b.dataset.dir)})});
+
+  var nb=document.getElementById('notes-btn');
+  function setNotes(on){page.classList.toggle('clean',!on);nb.setAttribute('aria-pressed',String(on));set('ogen-notes',on?'1':'0')}
+  setNotes(get('ogen-notes')!=='0');
+  nb.addEventListener('click',function(){setNotes(page.classList.contains('clean'))});
+
+  var cb=document.getElementById('copy-btn'), st=document.getElementById('copy-status'), txt=document.getElementById('pitch-text');
+  cb.addEventListener('click',function(){
+    var t=txt.textContent.trim();
+    function fallback(){var r=document.createRange();r.selectNodeContents(txt);var s=getSelection();s.removeAllRanges();s.addRange(r);st.textContent='הנוסח סומן. אפשר להעתיק עם Ctrl+C.'}
+    if(navigator.clipboard&&navigator.clipboard.writeText){
+      navigator.clipboard.writeText(t).then(function(){st.textContent='הנוסח הועתק.'},fallback);
+    }else{fallback()}
+  });
+})();
+</script>
+</body>
+</html>
