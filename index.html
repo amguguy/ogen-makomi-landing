@@ -539,6 +539,7 @@ html{scroll-behavior:smooth;scroll-padding-top:72px}
   var h=location.hash.replace('#','');
   setDir(h==='d04'?'space':h==='d05'?'hybrid':(get('ogen-dir')||'hybrid'));
   document.querySelectorAll('.proto [data-dir]').forEach(function(b){b.addEventListener('click',function(){setDir(b.dataset.dir)})});
+  addEventListener('hashchange',function(){var x=location.hash.replace('#','');if(x==='d04')setDir('space');else if(x==='d05')setDir('hybrid')});
 
   var nb=document.getElementById('notes-btn');
   function setNotes(on){page.classList.toggle('clean',!on);nb.setAttribute('aria-pressed',String(on));set('ogen-notes',on?'1':'0')}
