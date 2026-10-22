@@ -9,27 +9,56 @@
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700;800&family=IBM+Plex+Sans+Hebrew:wght@300;400;600;700&family=Rubik:wght@500;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700;800;900&family=IBM+Plex+Sans+Hebrew:wght@300;400;600;700&family=Rubik:wght@500;700;800&family=Karantina:wght@700&family=Assistant:wght@400;700;800&family=Amatic+SC:wght@700&display=swap">
 <style>
-/* Layout: one long RTL landing page in full-width bands; direction 05 = modular grid + highlighted node, direction 04 = open frames + white space.
-   Bare :root = direction 05 (light). [data-dir="space"] = direction 04. Both have dark variants. */
+/* Layout: one long RTL landing page in full-width bands. Five brand directions from the brand book share it:
+   01 smart = modular units, numbered tags · 02 motion = diagonal momentum, condensed type · 03 local = contours, field notes
+   04 space = open frames, white space · 05 hybrid = modular grid + one highlighted node.
+   Bare :root = 05 (light). [data-dir] selects the others; each has a dark variant. */
 :root{
   --bg:#EDE6D8; --surface:#F7F2E8; --ink:#1B2937; --muted:#4E5A55; --line:#CFC6B4;
   --brand:#0C3C32; --on-brand:#EDE6D8; --on-brand-muted:#B9C4B5;
-  --accent:#C6E13C; --accent-ink:#0C3C32; --warm:#E3B443; --sage:#75845A;
+  --accent:#C6E13C; --accent-ink:#0C3C32; --warm:#E3B443; --sage:#5F6C46;
   --todo-bg:#F6E7BD; --todo-ink:#5A4410; --todo-line:#C9A23A;
   --font-display:"Rubik","Heebo",system-ui,sans-serif; --display-weight:800; --display-track:-0.02em;
   --font-body:"Heebo","Arial Hebrew",Arial,sans-serif;
   --font-label:"IBM Plex Sans Hebrew","Heebo",Arial,sans-serif;
+  --font-eyebrow:var(--font-label); --eyebrow-size:13px; --eyebrow-track:.06em; --eyebrow-weight:600;
+  --display-scale:1; --display-lh:1.15;
   --radius:4px;
 }
 :root[data-dir="space"]{
   --bg:#F2F0E8; --surface:#FAF9F4; --ink:#172620; --muted:#53615A; --line:#D3D6CC;
   --brand:#172620; --on-brand:#F2F0E8; --on-brand-muted:#AEBBB4;
-  --accent:#B7CF52; --accent-ink:#172620; --warm:#D95C42; --sage:#9AADA4;
+  --accent:#B7CF52; --accent-ink:#172620; --warm:#D95C42; --sage:#5F7469;
   --todo-bg:#F7E0D9; --todo-ink:#6B2416; --todo-line:#D95C42;
   --font-display:"IBM Plex Sans Hebrew","Heebo",system-ui,sans-serif; --display-weight:300; --display-track:0.01em;
   --radius:0px;
+}
+:root[data-dir="smart"]{
+  --bg:#F3F1E8; --surface:#FBFAF5; --ink:#0E1D27; --muted:#4A5866; --line:#D3D6D2;
+  --brand:#0E1D27; --on-brand:#F3F1E8; --on-brand-muted:#B3C0CC;
+  --accent:#C5E72D; --accent-ink:#0E1D27; --warm:#1653A0; --sage:#1653A0;
+  --todo-bg:#E3ECF7; --todo-ink:#123E78; --todo-line:#1653A0;
+  --font-display:"Heebo",system-ui,sans-serif; --display-weight:900; --display-track:-0.03em;
+  --radius:2px;
+}
+:root[data-dir="motion"]{
+  --bg:#F1EBE4; --surface:#FAF6F2; --ink:#2C1737; --muted:#634F6B; --line:#DDCFCA;
+  --brand:#2C1737; --on-brand:#F1EBE4; --on-brand-muted:#D3C0CC;
+  --accent:#F05D5E; --accent-ink:#2C1737; --warm:#FF7B24; --sage:#A3304A;
+  --todo-bg:#FBE0D2; --todo-ink:#7A2A10; --todo-line:#FF7B24;
+  --font-display:"Karantina","Rubik",system-ui,sans-serif; --display-weight:700; --display-track:0;
+  --display-scale:1.45; --display-lh:.98; --radius:6px;
+}
+:root[data-dir="local"]{
+  --bg:#F3F0E7; --surface:#FAF8F2; --ink:#17302A; --muted:#4F5E55; --line:#DCD3BF;
+  --brand:#103D32; --on-brand:#F3F0E7; --on-brand-muted:#B9C6B4;
+  --accent:#D2E934; --accent-ink:#103D32; --warm:#8A6A2E; --sage:#517447;
+  --todo-bg:#EFE6CF; --todo-ink:#5B4718; --todo-line:#B59B62;
+  --font-display:"Assistant","Heebo",system-ui,sans-serif; --display-weight:800; --display-track:-0.01em;
+  --font-eyebrow:"Amatic SC","Assistant",cursive; --eyebrow-size:24px; --eyebrow-track:0; --eyebrow-weight:700;
+  --radius:10px;
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
@@ -44,6 +73,15 @@
     --accent:#B7CF52; --accent-ink:#172620; --warm:#E5806A; --sage:#9AADA4;
     --todo-bg:#3B201A; --todo-ink:#F3B9AA; --todo-line:#A0503E;
   }
+  :root[data-dir="smart"]:not([data-theme="light"]){
+    --bg:#0A141B; --surface:#101E28; --ink:#EEF0EA; --muted:#A9B4BE; --line:#22323E; --brand:#0F2533; --on-brand:#F3F1E8; --on-brand-muted:#AEBBC6; --accent:#C5E72D; --accent-ink:#0E1D27; --warm:#8DB1E6; --sage:#8DB1E6; --todo-bg:#14273D; --todo-ink:#BFD5F2; --todo-line:#3D6AA3;
+  }
+  :root[data-dir="motion"]:not([data-theme="light"]){
+    --bg:#1A0E21; --surface:#24152C; --ink:#F6EEE9; --muted:#C9B6C4; --line:#3B2744; --brand:#2C1737; --on-brand:#F1EBE4; --on-brand-muted:#D2BFCB; --accent:#F05D5E; --accent-ink:#1F0F27; --warm:#FF8A3D; --sage:#F6A6AE; --todo-bg:#3A1C1A; --todo-ink:#F8C3A8; --todo-line:#A0502C;
+  }
+  :root[data-dir="local"]:not([data-theme="light"]){
+    --bg:#0C1F19; --surface:#122A22; --ink:#EFEBDF; --muted:#AEB8A6; --line:#27423A; --brand:#133F33; --on-brand:#F3F0E7; --on-brand-muted:#B5C2B0; --accent:#D2E934; --accent-ink:#103D32; --warm:#DCCCAA; --sage:#9BB58F; --todo-bg:#332C18; --todo-ink:#E8D9A8; --todo-line:#7D6B3B;
+  }
 }
 :root[data-theme="dark"]{
   --bg:#0B1E1A; --surface:#112925; --ink:#ECE6D8; --muted:#A8B3A6; --line:#28443C;
@@ -57,6 +95,15 @@
   --accent:#B7CF52; --accent-ink:#172620; --warm:#E5806A; --sage:#9AADA4;
   --todo-bg:#3B201A; --todo-ink:#F3B9AA; --todo-line:#A0503E;
 }
+:root[data-theme="dark"][data-dir="smart"]{
+  --bg:#0A141B; --surface:#101E28; --ink:#EEF0EA; --muted:#A9B4BE; --line:#22323E; --brand:#0F2533; --on-brand:#F3F1E8; --on-brand-muted:#AEBBC6; --accent:#C5E72D; --accent-ink:#0E1D27; --warm:#8DB1E6; --sage:#8DB1E6; --todo-bg:#14273D; --todo-ink:#BFD5F2; --todo-line:#3D6AA3;
+}
+:root[data-theme="dark"][data-dir="motion"]{
+  --bg:#1A0E21; --surface:#24152C; --ink:#F6EEE9; --muted:#C9B6C4; --line:#3B2744; --brand:#2C1737; --on-brand:#F1EBE4; --on-brand-muted:#D2BFCB; --accent:#F05D5E; --accent-ink:#1F0F27; --warm:#FF8A3D; --sage:#F6A6AE; --todo-bg:#3A1C1A; --todo-ink:#F8C3A8; --todo-line:#A0502C;
+}
+:root[data-theme="dark"][data-dir="local"]{
+  --bg:#0C1F19; --surface:#122A22; --ink:#EFEBDF; --muted:#AEB8A6; --line:#27423A; --brand:#133F33; --on-brand:#F3F0E7; --on-brand-muted:#B5C2B0; --accent:#D2E934; --accent-ink:#103D32; --warm:#DCCCAA; --sage:#9BB58F; --todo-bg:#332C18; --todo-ink:#E8D9A8; --todo-line:#7D6B3B;
+}
 
 *{box-sizing:border-box}
 body{background:var(--bg);color:var(--ink);font-family:var(--font-body);font-size:17px;line-height:1.65}
@@ -65,19 +112,20 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 a{color:inherit}
 :focus-visible{outline:3px solid var(--warm);outline-offset:3px}
 .wrap{max-width:1180px;margin-inline:auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
-h1,h2,h3{font-family:var(--font-display);font-weight:var(--display-weight);letter-spacing:var(--display-track);text-wrap:balance;margin:0;line-height:1.15}
-h2{font-size:clamp(28px,3.6vw,44px)}
+h1,h2,h3{font-family:var(--font-display);font-weight:var(--display-weight);letter-spacing:var(--display-track);text-wrap:balance;margin:0;line-height:var(--display-lh)}
+h2{font-size:calc(clamp(28px,3.6vw,44px) * var(--display-scale))}
 h3{font-size:20px;font-family:var(--font-body);font-weight:700;letter-spacing:0}
 p{margin:0}
-.eyebrow{font-family:var(--font-label);font-size:13px;font-weight:600;letter-spacing:.06em;color:var(--sage)}
+.eyebrow{font-family:var(--font-eyebrow);font-size:var(--eyebrow-size);font-weight:var(--eyebrow-weight);letter-spacing:var(--eyebrow-track);line-height:1.2;color:var(--sage)}
 .lead{font-size:clamp(18px,1.7vw,21px);max-width:62ch;color:var(--muted)}
 .prose{display:grid;gap:14px;max-width:64ch}
 .skip{position:absolute;inset-inline-start:-999px;top:8px;background:var(--accent);color:var(--accent-ink);padding:8px 14px;z-index:30}
 .skip:focus{inset-inline-start:16px}
 
 /* direction-specific pieces */
-:root:not([data-dir="space"]) .only-space{display:none}
-:root[data-dir="space"] .only-hybrid{display:none}
+.v{display:none}
+:root:not([data-dir]) .v-hybrid,:root[data-dir="hybrid"] .v-hybrid,:root[data-dir="space"] .v-space,
+:root[data-dir="smart"] .v-smart,:root[data-dir="motion"] .v-motion,:root[data-dir="local"] .v-local{display:block}
 
 /* header */
 .top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--brand);color:var(--on-brand)}
@@ -98,14 +146,14 @@ p{margin:0}
 /* hero */
 .hero{background:var(--brand);color:var(--on-brand);overflow:hidden}
 .hero .wrap{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:48px;align-items:center;padding-block:64px 72px}
-.hero h1{font-size:clamp(48px,7.4vw,96px);line-height:1}
-.hero .tag{font-family:var(--font-display);font-weight:var(--display-weight);font-size:clamp(22px,2.6vw,32px);color:var(--accent);margin-top:10px}
+.hero h1{font-size:calc(clamp(48px,7.4vw,96px) * var(--display-scale));line-height:1}
+.hero .tag{font-family:var(--font-display);font-weight:var(--display-weight);font-size:calc(clamp(22px,2.6vw,32px) * var(--display-scale));line-height:1.15;color:var(--accent);margin-top:10px}
 .hero .hook{font-weight:700;font-size:clamp(19px,1.8vw,22px);margin-top:28px;max-width:34ch}
 .hero .body{color:var(--on-brand-muted);max-width:58ch;margin-top:14px;display:grid;gap:12px}
 .hero .line{font-family:var(--font-label);font-weight:600;margin-top:22px;padding-top:16px;border-top:1px solid color-mix(in srgb,var(--on-brand) 22%,transparent);max-width:58ch}
 .hero .ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
 .hero-art{width:100%;max-width:440px;justify-self:center;color:var(--on-brand)}
-.hero-art svg{width:100%;height:auto;display:block;direction:ltr}
+.hero-art svg{width:100%;height:auto;direction:ltr}
 :root[data-dir="space"] .hero{background:var(--bg);color:var(--ink)}
 :root[data-dir="space"] .hero .body{color:var(--muted)}
 :root[data-dir="space"] .hero .tag{color:var(--warm)}
@@ -144,14 +192,35 @@ section.band + section.band{border-top:1px solid var(--line)}
 @media (max-width:860px){.split{grid-template-columns:1fr;gap:36px}}
 .traits{display:grid;gap:0;border-top:2px solid var(--ink)}
 .trait{display:grid;grid-template-columns:minmax(0,11ch) minmax(0,1fr);gap:18px;padding-block:18px;border-bottom:1px solid var(--line)}
-.trait b{font-family:var(--font-display);font-weight:var(--display-weight);font-size:19px;line-height:1.3}
+.trait b{font-family:var(--font-display);font-weight:var(--display-weight);font-size:calc(19px * var(--display-scale));line-height:1.2}
 :root[data-dir="space"] .trait b{font-weight:600}
 .trait span{color:var(--muted)}
 @media (max-width:480px){.trait{grid-template-columns:1fr;gap:4px}}
-.quote{margin-top:44px;font-family:var(--font-display);font-weight:var(--display-weight);font-size:clamp(22px,2.4vw,30px);line-height:1.3;max-width:30ch}
+.quote{margin-top:44px;font-family:var(--font-display);font-weight:var(--display-weight);font-size:calc(clamp(22px,2.4vw,30px) * var(--display-scale));line-height:1.25;max-width:30ch}
 .quote small{display:block;font-family:var(--font-label);font-size:13px;font-weight:600;letter-spacing:.06em;color:var(--sage);margin-bottom:10px}
 :root[data-dir="space"] .quote{border:0;position:relative;padding:22px 26px}
 :root[data-dir="space"] .quote::before{content:"";position:absolute;inset:0;border:2px solid var(--warm);border-inline-end:0;pointer-events:none}
+
+/* 01 smart: square units, numbered */
+:root[data-dir="smart"] .node{background:var(--sage)}
+:root[data-dir="smart"] .zone-grid{counter-reset:z}
+:root[data-dir="smart"] .zone:not(.more) h3::after{counter-increment:z;content:"0" counter(z);margin-inline-start:auto;font-family:var(--font-label);font-size:13px;font-weight:600;color:var(--muted)}
+:root[data-dir="smart"] .head h2{padding-top:18px;border-top:6px solid var(--accent);display:inline-block}
+/* 02 motion: diagonal momentum */
+:root[data-dir="motion"] .node{background:var(--accent);transform:skewX(-20deg);width:16px}
+:root[data-dir="motion"] .head h2::after{content:"";display:block;width:96px;height:9px;margin-top:16px;background:var(--accent);transform:skewX(-24deg)}
+:root[data-dir="motion"] .btn{border-radius:var(--radius)}
+:root[data-dir="motion"] .hero .tag{color:var(--warm)}
+:root[data-dir="motion"] .logo{font-size:28px;font-weight:700;letter-spacing:0}
+:root[data-dir="motion"] .step::before{transform:skewX(-12deg)}
+:root[data-dir="motion"] .step:last-child::before{background:var(--accent);color:var(--accent-ink)}
+/* 03 local: contours and field notes */
+:root[data-dir="local"] .hero{background-image:repeating-radial-gradient(ellipse at 18% 30%,transparent 0 26px,color-mix(in srgb,var(--on-brand) 6%,transparent) 27px 28px)}
+:root[data-dir="local"] .node{background:transparent;border:2px solid var(--sage);border-radius:50%;box-shadow:inset 0 0 0 2px var(--surface),inset 0 0 0 6px var(--sage)}
+:root[data-dir="local"] .zone.more .node{border-color:var(--accent-ink);box-shadow:inset 0 0 0 2px var(--accent),inset 0 0 0 6px var(--accent-ink)}
+:root[data-dir="local"] .step::before{border-radius:50%}
+:root[data-dir="local"] .case .chip{border-radius:999px}
+:root[data-dir="local"] .quote small{font-family:var(--font-eyebrow);font-size:24px;letter-spacing:0}
 
 /* process */
 .steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:0;counter-reset:s}
@@ -220,7 +289,7 @@ section.band + section.band{border-top:1px solid var(--line)}
 /* footer */
 footer{background:var(--brand);color:var(--on-brand-muted);font-size:15px}
 footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;padding-block:34px 96px}
-footer b{color:var(--on-brand);font-family:var(--font-display);font-weight:var(--display-weight);font-size:20px}
+footer b{color:var(--on-brand);font-family:var(--font-display);font-weight:var(--display-weight);font-size:calc(20px * var(--display-scale))}
 footer nav{display:flex;flex-wrap:wrap;gap:18px}
 
 /* draft notes */
@@ -233,8 +302,9 @@ footer nav{display:flex;flex-wrap:wrap;gap:18px}
 .proto .seg{display:flex;border:1px solid color-mix(in srgb,var(--bg) 35%,transparent);border-radius:6px;overflow:hidden}
 .proto button{font:inherit;font-weight:600;background:transparent;color:inherit;border:0;padding:8px 12px;min-height:40px;cursor:pointer}
 .proto button[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink)}
-.proto .lbl{opacity:.75}
-@media (max-width:600px){.proto{padding:6px;gap:6px}.proto .lbl,.proto .long{display:none}}
+.proto .lbl{opacity:.85}
+.proto .lbl b{font-weight:600}
+@media (max-width:600px){.proto{padding:6px;gap:6px}.proto .lbl{display:none}.proto button{padding:8px 10px}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 html{scroll-behavior:smooth;scroll-padding-top:72px}
 </style>
@@ -247,12 +317,25 @@ html{scroll-behavior:smooth;scroll-padding-top:72px}
 <header class="top">
   <div class="wrap">
     <a class="logo" href="#top" aria-label="עוגן מקומי — לראש הדף">
-      <svg class="only-hybrid" viewBox="0 0 30 30" aria-hidden="true">
+      <svg class="v v-hybrid" viewBox="0 0 30 30" aria-hidden="true">
         <g fill="currentColor" opacity=".55"><rect x="0" y="0" width="8" height="8"/><rect x="11" y="0" width="8" height="8"/><rect x="22" y="0" width="8" height="8"/><rect x="0" y="11" width="8" height="8"/><rect x="22" y="11" width="8" height="8"/><rect x="0" y="22" width="8" height="8"/><rect x="11" y="22" width="8" height="8"/><rect x="22" y="22" width="8" height="8"/></g>
         <rect x="11" y="11" width="8" height="8" fill="var(--accent)"/>
       </svg>
-      <svg class="only-space" viewBox="0 0 30 30" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="3">
+      <svg class="v v-space" viewBox="0 0 30 30" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="3">
         <path d="M21 2H2v26h26V12"/><rect x="11" y="11" width="8" height="8" fill="var(--accent)" stroke="none"/>
+      </svg>
+      <svg class="v v-smart" viewBox="0 0 30 30" aria-hidden="true">
+        <g fill="currentColor"><rect x="0" y="0" width="13" height="13"/><rect x="17" y="0" width="13" height="13"/><rect x="0" y="17" width="13" height="13"/></g>
+        <rect x="19" y="19" width="11" height="11" fill="var(--accent)"/>
+      </svg>
+      <svg class="v v-motion" viewBox="0 0 30 30" aria-hidden="true">
+        <polygon points="0,29 7,29 14,13 7,13" fill="currentColor" opacity=".5"/>
+        <polygon points="9,29 16,29 25,6 18,6" fill="currentColor"/>
+        <polygon points="18,29 25,29 30,17 23,17" fill="var(--accent)"/>
+      </svg>
+      <svg class="v v-local" viewBox="0 0 30 30" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2">
+        <ellipse cx="15" cy="15" rx="13.5" ry="11" opacity=".45"/><ellipse cx="14" cy="15.5" rx="8.5" ry="6.5" opacity=".8"/>
+        <circle cx="13.5" cy="15.5" r="3.5" fill="var(--accent)" stroke="none"/>
       </svg>
       עוגן מקומי
     </a>
@@ -283,8 +366,53 @@ html{scroll-behavior:smooth;scroll-padding-top:72px}
     </div>
 
     <div class="hero-art" aria-hidden="true">
+      <!-- 01 smart, 02 motion, 03 local -->
+      <svg class="v v-smart" viewBox="0 0 400 400">
+        <g fill="currentColor" font-family="IBM Plex Sans Hebrew, Heebo, sans-serif" text-anchor="end">
+          <rect x="274" y="10" width="116" height="116" fill="none" stroke="currentColor" stroke-opacity=".35" stroke-width="1.5"/><text x="378" y="34" font-size="13" opacity=".6">01</text><text x="378" y="110" font-size="17" font-weight="700">חינוך</text>
+          <rect x="142" y="10" width="116" height="116" fill="none" stroke="currentColor" stroke-opacity=".35" stroke-width="1.5"/><text x="246" y="34" font-size="13" opacity=".6">02</text><text x="246" y="110" font-size="17" font-weight="700">קהילה</text>
+          <rect x="10" y="10" width="116" height="116" fill="none" stroke="currentColor" stroke-opacity=".35" stroke-width="1.5"/><text x="114" y="34" font-size="13" opacity=".6">03</text><text x="114" y="110" font-size="17" font-weight="700">בריאות</text>
+          <rect x="274" y="142" width="116" height="116" fill="none" stroke="currentColor" stroke-opacity=".35" stroke-width="1.5"/><text x="378" y="166" font-size="13" opacity=".6">04</text><text x="378" y="242" font-size="17" font-weight="700">רווחה</text>
+          <rect x="10" y="142" width="116" height="116" fill="none" stroke="currentColor" stroke-opacity=".35" stroke-width="1.5"/><text x="114" y="166" font-size="13" opacity=".6">05</text><text x="114" y="242" font-size="16" font-weight="700">חוסן וחירום</text>
+          <rect x="274" y="274" width="116" height="116" fill="none" stroke="currentColor" stroke-opacity=".35" stroke-width="1.5"/><text x="378" y="298" font-size="13" opacity=".6">06</text><text x="378" y="374" font-size="17" font-weight="700">צעירים</text>
+          <rect x="142" y="274" width="116" height="116" fill="none" stroke="currentColor" stroke-opacity=".35" stroke-width="1.5" stroke-dasharray="5 5"/><text x="246" y="374" font-size="16" font-weight="700" opacity=".75">+ זירות נוספות</text>
+          <rect x="10" y="274" width="116" height="116" fill="none" stroke="currentColor" stroke-opacity=".2" stroke-width="1.5" stroke-dasharray="5 5"/>
+        </g>
+        <rect x="142" y="142" width="116" height="116" fill="var(--accent)"/>
+        <g fill="var(--accent-ink)" font-family="IBM Plex Sans Hebrew, Heebo, sans-serif" text-anchor="end"><text x="246" y="166" font-size="13" opacity=".75">00</text><text x="246" y="234" font-size="19" font-weight="700">עוגן מקומי</text></g>
+      </svg>
+      <svg class="v v-motion" viewBox="0 0 400 400">
+        <polygon points="150,340 350,340 328,382 128,382" fill="currentColor" fill-opacity="0.10"/>
+        <text x="316" y="368" fill="currentColor" font-family="IBM Plex Sans Hebrew, Heebo, sans-serif" font-size="19" font-weight="700" text-anchor="end">חינוך</text>
+        <polygon points="132,288 344,288 322,330 110,330" fill="currentColor" fill-opacity="0.15"/>
+        <text x="310" y="316" fill="currentColor" font-family="IBM Plex Sans Hebrew, Heebo, sans-serif" font-size="19" font-weight="700" text-anchor="end">קהילה</text>
+        <polygon points="114,236 338,236 316,278 92,278" fill="currentColor" fill-opacity="0.20"/>
+        <text x="304" y="264" fill="currentColor" font-family="IBM Plex Sans Hebrew, Heebo, sans-serif" font-size="19" font-weight="700" text-anchor="end">בריאות</text>
+        <polygon points="96,184 332,184 310,226 74,226" fill="currentColor" fill-opacity="0.25"/>
+        <text x="298" y="212" fill="currentColor" font-family="IBM Plex Sans Hebrew, Heebo, sans-serif" font-size="19" font-weight="700" text-anchor="end">רווחה</text>
+        <polygon points="78,132 326,132 304,174 56,174" fill="currentColor" fill-opacity="0.30"/>
+        <text x="292" y="160" fill="currentColor" font-family="IBM Plex Sans Hebrew, Heebo, sans-serif" font-size="19" font-weight="700" text-anchor="end">חוסן וחירום</text>
+        <polygon points="60,80 320,80 298,122 38,122" fill="currentColor" fill-opacity="0.35"/>
+        <text x="286" y="108" fill="currentColor" font-family="IBM Plex Sans Hebrew, Heebo, sans-serif" font-size="19" font-weight="700" text-anchor="end">צעירים</text>
+        <polygon points="42,28 314,28 292,70 20,70" fill="var(--accent)"/>
+        <text x="280" y="56" fill="var(--accent-ink)" font-family="IBM Plex Sans Hebrew, Heebo, sans-serif" font-size="19" font-weight="700" text-anchor="end">מכאן מתחילה תנועה</text>
+      </svg>
+      <svg class="v v-local" viewBox="0 0 400 400">
+        <g fill="none" stroke="currentColor" stroke-width="1.5" transform="rotate(-10 200 212)">
+          <ellipse cx="200" cy="212" rx="46" ry="35" stroke-opacity="0.55"/>
+          <ellipse cx="203" cy="212" rx="86" ry="67" stroke-opacity="0.42"/>
+          <ellipse cx="206" cy="212" rx="126" ry="98" stroke-opacity="0.32"/>
+          <ellipse cx="209" cy="212" rx="166" ry="129" stroke-opacity="0.24"/>
+          <ellipse cx="212" cy="212" rx="196" ry="152" stroke-opacity="0.16"/>
+        </g>
+        <g stroke="currentColor" stroke-opacity=".55" stroke-width="1.5" stroke-dasharray="3 5"><path d="M200 212L110 112"/><path d="M200 212L300 96"/><path d="M200 212L346 228"/><path d="M200 212L292 330"/><path d="M200 212L108 322"/><path d="M200 212L58 206"/></g>
+        <g fill="var(--on-brand)"><circle cx="110" cy="112" r="7"/><circle cx="300" cy="96" r="7"/><circle cx="346" cy="228" r="7"/><circle cx="292" cy="330" r="7"/><circle cx="108" cy="322" r="7"/><circle cx="58" cy="206" r="7"/></g>
+        <circle cx="200" cy="212" r="30" fill="none" stroke="var(--accent)" stroke-width="2"/><circle cx="200" cy="212" r="16" fill="var(--accent)"/>
+        <g fill="currentColor" font-family="IBM Plex Sans Hebrew, Heebo, sans-serif" font-size="18" font-weight="600" text-anchor="middle"><text x="110" y="96">חינוך</text><text x="300" y="80">קהילה</text><text x="346" y="258">בריאות</text><text x="292" y="360">רווחה</text><text x="108" y="352">חוסן וחירום</text><text x="58" y="190">צעירים</text></g>
+        <text x="200" y="396" fill="currentColor" font-family="Amatic SC, Assistant, cursive" font-size="22" font-weight="700" text-anchor="middle" opacity=".75">אנשים · צרכים · נכסים · קשרים</text>
+      </svg>
       <!-- 05: modular map, one highlighted node -->
-      <svg class="only-hybrid" viewBox="0 0 400 400">
+      <svg class="v v-hybrid" viewBox="0 0 400 400">
         <g stroke="currentColor" stroke-opacity=".14" stroke-width="1">
           <path d="M0 50H400M0 100H400M0 150H400M0 200H400M0 250H400M0 300H400M0 350H400M50 0V400M100 0V400M150 0V400M200 0V400M250 0V400M300 0V400M350 0V400"/>
         </g>
@@ -306,7 +434,7 @@ html{scroll-behavior:smooth;scroll-padding-top:72px}
         </g>
       </svg>
       <!-- 04: open frame -->
-      <svg class="only-space" viewBox="0 0 400 400">
+      <svg class="v v-space" viewBox="0 0 400 400">
         <path d="M250 30H30V370H370V160" fill="none" stroke="currentColor" stroke-width="10"/>
         <rect x="300" y="30" width="70" height="70" fill="var(--accent)"/>
         <g fill="currentColor" font-family="IBM Plex Sans Hebrew, Heebo, sans-serif" text-anchor="end">
@@ -514,10 +642,13 @@ html{scroll-behavior:smooth;scroll-padding-top:72px}
 </footer>
 
 <div class="proto" role="group" aria-label="כלי אב־טיפוס">
-  <span class="lbl">אב־טיפוס · כיוון עיצובי</span>
+  <span class="lbl">כיוון עיצובי: <b id="dir-name">05 · מערכת חכמה × מקומי</b></span>
   <div class="seg">
-    <button type="button" id="dir-hybrid" data-dir="hybrid" aria-pressed="true">05<span class="long"> מערכת × מקומי</span></button>
-    <button type="button" id="dir-space" data-dir="space" aria-pressed="false">04<span class="long"> המרחב שמאפשר</span></button>
+    <button type="button" id="dir-smart" data-dir="smart" data-name="01 · מערכת חכמה" aria-label="כיוון 01: מערכת חכמה" aria-pressed="false">01</button>
+    <button type="button" id="dir-motion" data-dir="motion" data-name="02 · כוח בתנועה" aria-label="כיוון 02: כוח בתנועה" aria-pressed="false">02</button>
+    <button type="button" id="dir-local" data-dir="local" data-name="03 · מקומי. ממשי." aria-label="כיוון 03: מקומי. ממשי." aria-pressed="false">03</button>
+    <button type="button" id="dir-space" data-dir="space" data-name="04 · המרחב שמאפשר" aria-label="כיוון 04: המרחב שמאפשר" aria-pressed="false">04</button>
+    <button type="button" id="dir-hybrid" data-dir="hybrid" data-name="05 · מערכת חכמה × מקומי" aria-label="כיוון 05: מערכת חכמה × מקומי" aria-pressed="true">05</button>
   </div>
   <div class="seg">
     <button type="button" id="notes-btn" aria-pressed="true">סימוני טיוטה</button>
@@ -531,15 +662,19 @@ html{scroll-behavior:smooth;scroll-padding-top:72px}
   root.lang='he'; root.dir='rtl';
   function get(k){try{return localStorage.getItem(k)}catch(e){return null}}
   function set(k,v){try{localStorage.setItem(k,v)}catch(e){}}
+  var DIRS={d01:'smart',d02:'motion',d03:'local',d04:'space',d05:'hybrid'};
+  var names={}; document.querySelectorAll('.proto [data-dir]').forEach(function(b){names[b.dataset.dir]=b.dataset.name});
   function setDir(d){
-    if(d==='space'){root.setAttribute('data-dir','space')}else{root.removeAttribute('data-dir');d='hybrid'}
+    if(!names[d]) d='hybrid';
+    root.setAttribute('data-dir',d);
     document.querySelectorAll('.proto [data-dir]').forEach(function(b){b.setAttribute('aria-pressed',String(b.dataset.dir===d))});
+    document.getElementById('dir-name').textContent=names[d];
     set('ogen-dir',d);
   }
-  var h=location.hash.replace('#','');
-  setDir(h==='d04'?'space':h==='d05'?'hybrid':(get('ogen-dir')||'hybrid'));
+  function fromHash(){return DIRS[location.hash.replace('#','')]}
+  setDir(fromHash()||get('ogen-dir')||'hybrid');
   document.querySelectorAll('.proto [data-dir]').forEach(function(b){b.addEventListener('click',function(){setDir(b.dataset.dir)})});
-  addEventListener('hashchange',function(){var x=location.hash.replace('#','');if(x==='d04')setDir('space');else if(x==='d05')setDir('hybrid')});
+  addEventListener('hashchange',function(){var d=fromHash();if(d)setDir(d)});
 
   var nb=document.getElementById('notes-btn');
   function setNotes(on){page.classList.toggle('clean',!on);nb.setAttribute('aria-pressed',String(on));set('ogen-notes',on?'1':'0')}
